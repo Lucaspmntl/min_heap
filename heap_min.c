@@ -108,7 +108,7 @@ void inserir(Heap *h, int valor) {
     exibirHeap(h);
     printf("\n");
 
-    printf(BLUE "Elemento inserido com sucesso.\n" RESET);
+    printf(BLUE "Elemento %d inserido com sucesso.\n" RESET, valor);
     printf("\n");
 
     h->dados[h->tamanho] = valor;
