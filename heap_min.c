@@ -112,8 +112,9 @@ void inserir(Heap *h, int valor) {
     printf("\n");
 
     h->dados[h->tamanho] = valor;
-    heapifyUp(h, h->tamanho);
-    h->tamanho++;
+    h->tamanho++;                 
+    heapifyUp(h, h->tamanho - 1);
+    
 
     printf("\n");
     printf(GREEN "Novo " RESET);
@@ -165,6 +166,8 @@ void exibirHeap(Heap *h) {
         }
     }
     printf(" ]\n" RESET);
+    printf("Tamanho: %d\n", h->tamanho);
+    printf("Capacidade: %d\n", h->capacidade);
 }
 
 
@@ -218,9 +221,9 @@ int main() {
 
             default:
                 limparTela();
-
                 printf("Opcao invalida!\n");
         }
+
     } while (opcao != 0);
 
     liberarHeap(&heap);
