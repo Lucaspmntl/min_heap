@@ -11,13 +11,13 @@
 
 /* Estrutura do Heap Dinâmico */
 typedef struct {
-    int *dados;
-    int tamanho;
-    int capacidade;
+    int *dados;         //Array dinâmico para armazenar os elementos
+    int tamanho;        //Quantidade de elementos válidos
+    int capacidade;     //Quantidade máxima suportada sem realocação
 } Heap;
 
 
-/* Protótipos das funções */
+/* Protótipos da função */
 void exibirHeap(Heap *h);
 
 
@@ -152,16 +152,19 @@ void removerMenor(Heap *h) {
 
 /* Exibir Heap */
 void exibirHeap(Heap *h) {
-    if (h->tamanho == 0) {
+    if (h == NULL || h->tamanho == 0) {
         printf(YELLOW "Heap vazia!\n" RESET);
         return;
     }
 
     printf(GREEN "Heap: [ ");
     for (int i = 0; i < h->tamanho; i++) {
-        printf("%d ", h->dados[i]);
+        printf("%d", h->dados[i]);
+        if (i < h->tamanho - 1) {
+            printf(", ");
+        }
     }
-    printf("]\n" RESET);
+    printf(" ]\n" RESET);
 }
 
 
@@ -215,6 +218,7 @@ int main() {
 
             default:
                 limparTela();
+
                 printf("Opcao invalida!\n");
         }
     } while (opcao != 0);
